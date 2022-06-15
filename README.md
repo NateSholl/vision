@@ -1,8 +1,8 @@
 # Vision
-## A shared collection of all things computer science related. 
+A shared collection of all things computer science related. 
 
-## Feel free to create scripts, modules, etc. 
-## Please keep your space tidy. 
+Feel free to create scripts, modules, etc. 
+Please keep your space tidy. 
 
 General scripts that start and end in the same file should be stored under the 'scripts' folder.
 Euler solutions should go in th 'solutions' folder
