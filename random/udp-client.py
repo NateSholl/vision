@@ -1,4 +1,3 @@
-from http import server
 import socket
 
 msg_from_client = "Hello UDP Server!"
