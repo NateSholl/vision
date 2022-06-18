@@ -1,1 +1,3 @@
-Bluetooth to 1/4 & 1/8 in adapter.
+# Project Ideas
+
+- Bluetooth to 1/4 & 1/8 in adapter.
