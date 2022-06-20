@@ -2,7 +2,7 @@ import random
 
 suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
 ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
-values = {'Two':2, 'Three':3, 'Four':4, 'Five':5, 'Six':6, 'Seven':7, 'Eight':8, 'Nine':9, 'Ten':10, 'Jack':11, 'Queen':12, 'King':13, 'Ace':14}
+values = {'Two':2, 'Three':3, 'Four':4, 'Five':5, 'Six':6, 'Seven':7, 'Eight':8, 'Nine':9, 'Ten':10, 'Jack':10, 'Queen':10, 'King':10, 'Ace':11}
 
 class Card():
     
@@ -28,7 +28,7 @@ class Deck():
         random.shuffle(self.allCards)
 
     def dealOne(self):
-        return self.allCards.pop()
+        return self.allCards.pop(0)
 
 class Player():
 
@@ -41,7 +41,15 @@ class Player():
             self.playerCards.extend(new_cards)
         else:
             self.playerCards.append(new_cards)        
+    
+    def is_under_21(self):
+        sum_of_hand = 0
+        for x in self.playerCards:
+            sum_of_hand += Card.value
         
+        if sum_of_hand <= 21:
+            return True
+        else:
+            return False
+            
 
-if __name__ == '__main__':
-    test = Deck()
