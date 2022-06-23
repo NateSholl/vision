@@ -25,22 +25,28 @@ class Deck():
                 self.allCards.append(deck_card)
 
     def shuffleDeck(self):
-        random.shuffle(self.allCards)
+        return random.shuffle(self.allCards)
 
     def dealOne(self):
         return self.allCards.pop(0)
 
 class Player():
 
-    def __init__(self,name,):
+    def __init__(self,name):
         self.name = name
         self.playerCards = []
 
+    def __str__(self):
+        print_string = ''
+        for x in self.playerCards:
+            print_string += (x.__str__() + ', ')
+        return print_string
+
     def addCards(self,new_cards):
         if type(new_cards) == type([]):
-            self.playerCards.extend(new_cards)
+           self.playerCards.extend(new_cards)
         else:
-            self.playerCards.append(new_cards)        
+           self.playerCards.append(new_cards)   
     
     def is_under_21(self):
         sum_of_hand = 0
@@ -51,5 +57,5 @@ class Player():
             return True
         else:
             return False
-            
 
+    
