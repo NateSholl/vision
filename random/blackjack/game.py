@@ -8,6 +8,10 @@ while game_on == True:
     
     gameDeck = bj.Deck()
     gameDeck.shuffleDeck()
+    user.addCards(gameDeck.dealOne())
+    user.addCards(gameDeck.dealOne())
+    dealer.addCards(gameDeck.dealOne())
+    dealer.addCards(gameDeck.dealOne())
     
     # want to play again
     round_on = False
@@ -19,11 +23,6 @@ while game_on == True:
 
     # round start
     while round_on == True:
-        # deal cards
-        user.addCards(gameDeck.dealOne())
-        user.addCards(gameDeck.dealOne())
-        dealer.addCards(gameDeck.dealOne())
-        dealer.addCards(gameDeck.dealOne())
 
         stay = False
         while user.is_blackjack() == False and user.is_under_21() == True and stay == False and dealer.is_blackjack() == False:
@@ -50,7 +49,7 @@ while game_on == True:
         if user.is_blackjack() == True:
             print('Your cards = ' + user.__str__())
             print('Dealer Cards = ' + dealer.__str__())
-            print('Blackjack! Player ywins!')
+            print('Blackjack! Player wins!')
             round_on = False
         elif user.is_under_21() == False:
             print('Your cards = ' + user.__str__())
@@ -62,10 +61,14 @@ while game_on == True:
             print('Dealer Cards = ' + dealer.__str__())
             print('Dealer Blackjack!')
             round_on = False
+        elif dealer.is_under_21() == False:
+            print('Your cards = ' + user.__str__())
+            print('Dealer Cards = ' + dealer.__str__())
+            print('Dealer Bust. Player Wins!')
         elif user.sumofHand() > dealer.sumofHand() and user.is_under_21() == True:
             print('Your cards = ' + user.__str__())
             print('Dealer Cards = ' + dealer.__str__())
-            print('User Wins!')
+            print('PlayerWins!')
             round_on = False
         elif user.sumofHand() == dealer.sumofHand():
             print('Your cards = ' + user.__str__())
