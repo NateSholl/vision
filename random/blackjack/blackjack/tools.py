@@ -48,14 +48,30 @@ class Player():
         else:
            self.playerCards.append(new_cards)   
     
+    def sumofHand(self):
+        sum_of_hand = 0
+        for x in self.playerCards:
+            sum_of_hand += x.value
+        return sum_of_hand
+ 
     def is_under_21(self):
         sum_of_hand = 0
         for x in self.playerCards:
-            sum_of_hand += Card.value
+            sum_of_hand += x.value
         
         if sum_of_hand <= 21:
             return True
         else:
             return False
+
+    def is_blackjack(self):
+        sum_of_hand = 0
+        for x in self.playerCards:
+            sum_of_hand += x.value
+
+        return sum_of_hand == 21
+
+
+
 
     

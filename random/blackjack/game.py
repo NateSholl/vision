@@ -19,17 +19,62 @@ while game_on == True:
 
     # round start
     while round_on == True:
-        
         # deal cards
         user.addCards(gameDeck.dealOne())
         user.addCards(gameDeck.dealOne())
         dealer.addCards(gameDeck.dealOne())
         dealer.addCards(gameDeck.dealOne())
 
-        if user.is_under_21() == False:
-            round_on = False
-        print('Your cards = ' + user.__str__())
-        print('Dealer Cards = ' + dealer.__str__())
-        round_on = False
+        stay = False
+        while user.is_blackjack() == False and user.is_under_21() == True and stay == False and dealer.is_blackjack() == False:
 
+            print('Your cards = ' + user.__str__())
+            print('Dealer Cards = ' + dealer.__str__())
+        
+            hitInput = input('Would you like to hit? y/n')
+
+            if hitInput == 'y':
+                user.addCards(gameDeck.dealOne())
+                print('Your cards = ' + user.__str__())
+                print('Dealer Cards = ' + dealer.__str__())
+            elif hitInput == 'n':
+                stay = True
+            else:
+                print('Please only input y/n!')
+        
+        while dealer.is_blackjack() == False and dealer.sumofHand() <= user.sumofHand() and user.is_under_21() == True:
+            dealer.addCards(gameDeck.dealOne())
+            if dealer.is_under_21 == False:
+                break
+
+        if user.is_blackjack() == True:
+            print('Your cards = ' + user.__str__())
+            print('Dealer Cards = ' + dealer.__str__())
+            print('Blackjack! Player ywins!')
+            round_on = False
+        elif user.is_under_21() == False:
+            print('Your cards = ' + user.__str__())
+            print('Dealer Cards = ' + dealer.__str__())
+            print('Player Bust!')
+            round_on = False
+        elif dealer.is_blackjack() == True:
+            print('Your cards = ' + user.__str__())
+            print('Dealer Cards = ' + dealer.__str__())
+            print('Dealer Blackjack!')
+            round_on = False
+        elif user.sumofHand() > dealer.sumofHand() and user.is_under_21() == True:
+            print('Your cards = ' + user.__str__())
+            print('Dealer Cards = ' + dealer.__str__())
+            print('User Wins!')
+            round_on = False
+        elif user.sumofHand() == dealer.sumofHand():
+            print('Your cards = ' + user.__str__())
+            print('Dealer Cards = ' + dealer.__str__())
+            print('Game Draw')
+        else:
+            print('Your cards = ' + user.__str__())
+            print('Dealer Cards = ' + dealer.__str__())
+            print('Dealer Wins')
+            round_on = False
+        
     game_on = False
