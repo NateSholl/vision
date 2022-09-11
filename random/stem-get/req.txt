@@ -1,0 +1,5 @@
+brew ffmpeg
+brew libsndfile
+pip3 youtube_dl
+pip3 spleeter
+pip3 keyfinder 1.1.0
